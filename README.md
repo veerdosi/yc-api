@@ -6,6 +6,33 @@ from the Y Combinator website's Algolia search index. It only includes
 not scrape the Y Combinator website, instead it uses the Algolia search index to
 fetch the companies in a GitHub Actions workflow that runs every day.
 
+This repository uses a Deno script to fetch data from the Y Combinator website's Algolia search index. The data is updated automatically every day by a GitHub Actions workflow, but you can also run the script manually to update the data at any time.
+
+Here's how to run the system and manually update the data:
+
+**1. Install Deno**
+
+If you don't already have Deno installed, you'll need to install it. You can find the installation instructions for your operating system on the Deno website: [https://deno.land/#installation](https://deno.land/#installation)
+
+**2. Run the fetcher script**
+
+Once you have Deno installed, open your terminal, navigate to the root directory of the repository, and run the following command:
+
+```
+deno run --allow-net --allow-read --allow-write fetcher.ts
+```
+
+This command will execute the `fetcher.ts` script, which will:
+
+*   Fetch the latest company data from the Y Combinator Algolia index.
+*   Create and update the JSON files in the `companies`, `tags`, `industries`, and `batches` directories.
+*   Update the `meta.json` file with the latest metadata.
+*   Update the `README.md` file with the latest statistics.
+
+**3. Commit the changes**
+
+After the script has finished running, you can commit the changes to your forked repository.
+
 <!--start generated readme-->
 
 ## ℹ️ Metadata
@@ -587,3 +614,5 @@ Here are first 10 companies from the Top Companies API
 | <img src="https://bookface-images.s3.amazonaws.com/small_logos/251df7a6d1d16ee11aac63b910791aca861aff29.png" width="50" height="50" /> | HelloSign  | eSignature software for small and mid-market businesses.                |
 | <img src="https://bookface-images.s3.amazonaws.com/small_logos/e57fe3f2f5b8a158002acd8fef99c01e7294b55c.png" width="50" height="50" /> | Fivestars  | Customer loyalty and payments platform for small businesses.            |
 | <img src="https://bookface-images.s3.amazonaws.com/small_logos/4f3a455935f36a6655742aae286b206df1cd13bd.png" width="50" height="50" /> | GOAT Group | Platform for the greatest products from the past, present and future.   |
+
+```
